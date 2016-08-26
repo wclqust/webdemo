@@ -45,7 +45,7 @@ node{
                     // pwd() Workflow call) and use that for the local Maven repository.
                     sh "rm -rf  /data/.jenkins/workspace/webdemo/develop/target "
                     
-                    sh "mvn  clean install  -Dmaven.test.failure.ignore=true -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
+                    sh "mvn  clean install  -Dmaven.test.failure.ignore=true -V -B -X" //-Dmaven.repo.local=${pwd()}/.repository"
                 }
             }
 
