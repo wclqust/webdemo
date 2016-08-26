@@ -79,6 +79,8 @@
                     <pushReleases>true</pushReleases>
                     <pushHotfixes>true</pushHotfixes>
                     <allowUntracked>true</allowUntracked>
+                    <username>wclqust</username>
+<password>Imseam!!!9876</password> 
                 </configuration>
 </plugin>
 			<plugin>
