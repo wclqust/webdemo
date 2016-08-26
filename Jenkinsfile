@@ -43,6 +43,8 @@ node{
                     // The -Dmaven.repo.local=${pwd()}/.repository means that Maven will create a
                     // .repository directory at the root of the build (which it gets from the
                     // pwd() Workflow call) and use that for the local Maven repository.
+                    sh "rm -rf  /data/.jenkins/workspace/webdemo/develop/target "
+                    
                     sh "mvn  clean install  -Dmaven.test.failure.ignore=true -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
                 }
             }
@@ -51,7 +53,7 @@ node{
            // stage "Archive Artifacts"
 
            // step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar, **/target/*.tar.gz', fingerprint: true])
-           // step([$class: 'JUnitResultArchiver', healthScaleFactor: 20.0, testResults: '**/target/surefire-reports/*.xml'])
+            step([$class: 'JUnitResultArchiver', healthScaleFactor: 20.0, testResults: '**/target/surefire-reports/*.xml'])
 
             /* stage "Quality Assurance"
             timeout(time: 15, unit: 'MINUTES') {
