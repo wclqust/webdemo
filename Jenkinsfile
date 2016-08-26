@@ -43,7 +43,7 @@ node{
                     // The -Dmaven.repo.local=${pwd()}/.repository means that Maven will create a
                     // .repository directory at the root of the build (which it gets from the
                     // pwd() Workflow call) and use that for the local Maven repository.
-                    sh "./mvnw  clean install  -Dmaven.test.failure.ignore=true -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
+                    sh "mvn  clean install  -Dmaven.test.failure.ignore=true -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
                 }
             }
 
@@ -70,16 +70,16 @@ node{
                         if (env.BRANCH_NAME.startsWith("develop")) {
                             echo "Developer can : start a Feature manually using :  ./mvnw clean jgitflow:feature-start -V -B"
                             input message: v + ' : Want to star new Release ?'
-                            sh "./mvnw clean jgitflow:release-start -V -B -X"
+                            sh "mvn clean jgitflow:release-start -V -B -X"
                         } else if (env.BRANCH_NAME.startsWith("release")) {
                             input message: v + ' : Finish Release ?'
-                            sh "./mvnw clean jgitflow:release-finish -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
+                            sh "mvn clean jgitflow:release-finish -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
                         } else if (env.BRANCH_NAME.startsWith("hotfix")) {
                             input message: v + ' : Finish Hotfix ?'
-                            sh "./mvnw clean jgitflow:hotfix-finish  -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
+                            sh "mvn clean jgitflow:hotfix-finish  -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
                         } else if (env.BRANCH_NAME.startsWith("feature")) {
                             input message: v + ' : Finish Feature ?'
-                            sh "./mvnw clean jgitflow:feature-finish  -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
+                            sh "mvn clean jgitflow:feature-finish  -V -B " //-Dmaven.repo.local=${pwd()}/.repository"
                         } else if (env.BRANCH_NAME.startsWith("master")) {
                             echo "You can :  Hotfix start manually using :  ./mvnw clean jgitflow:hotfix-start -V -B"
                         } else if (env.BRANCH_NAME.startsWith("support")) {
