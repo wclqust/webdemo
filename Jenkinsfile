@@ -48,10 +48,10 @@ node{
             }
 
             // Once we've built, archive the artifacts and the test results.
-            stage "Archive Artifacts"
+           // stage "Archive Artifacts"
 
-            step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar, **/target/*.tar.gz', fingerprint: true])
-            step([$class: 'JUnitResultArchiver', healthScaleFactor: 20.0, testResults: '**/target/surefire-reports/*.xml'])
+           // step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar, **/target/*.tar.gz', fingerprint: true])
+           // step([$class: 'JUnitResultArchiver', healthScaleFactor: 20.0, testResults: '**/target/surefire-reports/*.xml'])
 
             /* stage "Quality Assurance"
             timeout(time: 15, unit: 'MINUTES') {
